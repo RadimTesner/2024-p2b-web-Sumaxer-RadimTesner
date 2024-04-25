@@ -1,5 +1,7 @@
 @import url(https://fonts.googleapis.com/css?family=Audiowide);
-
+html{
+    font-family: Audiowide, cursive;
+}
 .card {
     --size: var(--cardSize, 72px);
     --bg: #eee;
@@ -7,11 +9,11 @@
     --shd: #aaa;
     display: inline-block;
     position: relative;
-    margin: 0;
+    margin: 0.5em;
     width: var(--size);
     height: var(--size);
     
-    font-family: Audiowide, cursive;
+
     border-radius: 50%;
 
     user-select: none;

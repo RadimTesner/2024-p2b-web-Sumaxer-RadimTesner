@@ -24,11 +24,11 @@ document.addEventListener("DOMContentLoaded", () => {
         container.appendChild(cardElement)
         cardElement.addEventListener("click", cardClick)
     }
-
 });
 
 const cardClick = (event) => {
     const card = event.currentTarget;
+    const flipped = document.querySelector(".flipped");
     if (rounds != 0){
         if (!card.classList.contains("turned")) {
             if (counter < 4) {
@@ -38,6 +38,14 @@ const cardClick = (event) => {
                 const num = parseInt(card.querySelector("figcaption span").textContent);
                 sum += num;
                 update();
+
+                const cardElement = document.createElement("figure");
+                cardElement.classList.add("card", "active", "turned")
+                cardElement.innerHTML = `
+                    <figcaption class="face"><span>${num}</span></figcaption>
+                    <div class="back yinyang"></div>
+                `
+                flipped.appendChild(cardElement)
             }
         } else {
             card.classList.toggle("turned");
@@ -45,6 +53,16 @@ const cardClick = (event) => {
             const num = parseInt(card.querySelector("figcaption span").textContent);
             sum -= num;
             update();
+            
+            const flippedCards = flipped.querySelectorAll(".card");
+            for (let i = 0; i < flippedCards.length; i++) {
+                const flippedNum = parseInt(flippedCards[i].querySelector("figcaption span").textContent);
+                if (flippedNum === num) {
+                    flipped.removeChild(flippedCards[i]);
+                    break;
+                }
+            }
+
         }
     }
 }
