@@ -1,0 +1,10 @@
+.main__board{
+    display: grid;
+    grid-template-columns: 20vw 80vw;
+}
+.desk{
+    grid-column: 2;
+}
+.flipped{
+    grid-column: 1;
+}

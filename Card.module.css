@@ -1,0 +1,105 @@
+@import url(https://fonts.googleapis.com/css?family=Audiowide);
+
+.card {
+    --size: var(--cardSize, 72px);
+    --bg: #eee;
+    --fg: black;
+    --shd: #aaa;
+    display: inline-block;
+    position: relative;
+    margin: 0;
+    width: var(--size);
+    height: var(--size);
+    
+    font-family: Audiowide, cursive;
+    border-radius: 50%;
+
+    user-select: none;
+}
+
+.active {
+    cursor: pointer;
+    transition: transform .25s ease-in-out;
+}
+.active:hover {
+    transform: scale(1.1);
+}
+
+@media screen and (min-width: 960px) {
+    .card {
+        --size: var(--cardSize, 112px);
+    }
+}
+@media screen and (min-width: 1080px) {
+    .card {
+        --size: var(--cardSize, 140px);
+    }
+}
+
+.face, .back {
+    background-color: var(--bg);
+    color: var(--bg);
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    backface-visibility: hidden;
+
+    transform-style: preserve-3d;
+    transition: transform .5s ease-in-out, color .25s linear;
+
+    border: 2px solid var(--fg);
+    border-radius: 50%;
+    box-shadow: -5px 5px 5px var(--shd);
+}
+
+.face {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.turned .face, .back {
+    transform: rotateY(0deg);
+}
+.turned .face {
+    color: var(--fg);
+}
+
+.turned .back, .face {
+    transform: rotateY(180deg);
+}
+
+.face {
+    margin: 0px;
+    text-align: center;
+    font-size: calc(var(--size) / 2.1);
+}
+
+.yinyang {
+    box-sizing: border-box;
+    position: relative;
+
+    height: 100%;
+	aspect-ratio: 1/1;
+	border-width: 2px 2px calc(var(--size) / 2) 2px;
+    border-radius: 50%;
+}
+
+.yinyang::before, .yinyang::after {
+	content: "";
+    box-sizing: border-box;
+	position: absolute;
+	top: 50%;
+	left: 0;
+	background-color: var(--bg);
+	border: calc(var(--size) / 6) solid var(--fg);
+	width: 50%;
+	aspect-ratio: 1/1;
+    border-radius: 50%;
+}
+
+.yinyang::after {
+	left: 50%;
+	background-color: var(--fg);
+    border-color: var(--bg);
+}
