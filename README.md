@@ -1,1 +1,1 @@
-Sumaxer - Kazduv napad ukol misto testu
+Sumaxer - Kazduv ukol misto testu
